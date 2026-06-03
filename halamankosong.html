@@ -3,143 +3,304 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dalam Pembuatan</title>
+
+<title>Coming Soon</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
+:root{
+    --primary:#00d4ff;
+    --secondary:#7c3aed;
+    --text:#ffffff;
+    --text-soft:#a8b3cf;
+}
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
 }
 
 body{
+    font-family:'Poppins',sans-serif;
     min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#0f172a,#1e293b,#0f172a);
+    background:#050816;
     overflow:hidden;
-    position:relative;
+    color:white;
 }
 
-/* Background Blur */
-body::before,
-body::after{
-    content:'';
+/* BACKGROUND */
+
+.bg{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+}
+
+.bg::before{
+    content:"";
     position:absolute;
-    width:350px;
-    height:350px;
+    inset:0;
+    background:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size:40px 40px;
+}
+
+.glow{
+    position:absolute;
     border-radius:50%;
     filter:blur(120px);
 }
 
-body::before{
-    background:#3b82f6;
-    top:-100px;
+.glow.one{
+    width:400px;
+    height:400px;
+    background:#00d4ff;
+    top:-150px;
     left:-100px;
+    opacity:.4;
 }
 
-body::after{
-    background:#8b5cf6;
-    bottom:-100px;
+.glow.two{
+    width:450px;
+    height:450px;
+    background:#7c3aed;
     right:-100px;
+    bottom:-100px;
+    opacity:.35;
 }
+
+/* FLOATING ORBS */
+
+.orb{
+    position:absolute;
+    border-radius:50%;
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.1);
+    animation:float 8s ease-in-out infinite;
+}
+
+.orb1{
+    width:100px;
+    height:100px;
+    top:15%;
+    left:10%;
+    background:rgba(0,212,255,.08);
+}
+
+.orb2{
+    width:150px;
+    height:150px;
+    right:8%;
+    top:25%;
+    background:rgba(124,58,237,.08);
+    animation-delay:2s;
+}
+
+.orb3{
+    width:70px;
+    height:70px;
+    bottom:15%;
+    left:15%;
+    background:rgba(255,255,255,.05);
+    animation-delay:4s;
+}
+
+/* MAIN */
 
 .container{
-    position:relative;
-    z-index:2;
-    width:90%;
-    max-width:700px;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
 }
 
 .card{
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(15px);
-    border:1px solid rgba(255,255,255,0.15);
-    border-radius:30px;
-    padding:60px 40px;
+    width:100%;
+    max-width:850px;
     text-align:center;
-    color:white;
-    box-shadow:0 20px 50px rgba(0,0,0,.3);
+    padding:60px 40px;
+    border-radius:32px;
+
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+    0 0 50px rgba(0,212,255,.12),
+    0 0 100px rgba(124,58,237,.08);
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    padding:10px 20px;
+    border-radius:999px;
+
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
+
+    margin-bottom:30px;
+}
+
+.badge span{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#22c55e;
+    box-shadow:0 0 15px #22c55e;
+    animation:pulse 1.5s infinite;
 }
 
 .icon{
     font-size:90px;
     margin-bottom:20px;
-    animation:float 3s ease-in-out infinite;
+    animation:float 4s ease-in-out infinite;
 }
 
 h1{
-    font-size:2.3rem;
-    margin-bottom:15px;
-    font-weight:700;
+    font-size:clamp(2.5rem,6vw,5rem);
+    font-weight:800;
+    line-height:1.1;
+    margin-bottom:20px;
+
+    background:linear-gradient(
+    90deg,
+    #fff,
+    #00d4ff,
+    #a855f7,
+    #fff);
+
+    background-size:300%;
+    -webkit-background-clip:text;
+    color:transparent;
+
+    animation:shine 6s linear infinite;
 }
 
 p{
-    color:#cbd5e1;
+    max-width:650px;
+    margin:auto;
+    color:var(--text-soft);
     line-height:1.8;
-    margin-bottom:30px;
+    font-size:1.05rem;
 }
 
-.status{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    padding:12px 22px;
-    background:rgba(255,255,255,.1);
-    border-radius:50px;
-    border:1px solid rgba(255,255,255,.1);
+.progress-box{
+    margin-top:40px;
 }
 
-.dot{
-    width:10px;
-    height:10px;
-    border-radius:50%;
-    background:#22c55e;
-    animation:pulse 1.5s infinite;
+.progress-title{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
+    color:#dbe4ff;
+}
+
+.progress{
+    width:100%;
+    height:14px;
+    border-radius:999px;
+    overflow:hidden;
+    background:rgba(255,255,255,.08);
+}
+
+.progress-fill{
+    height:100%;
+    width:78%;
+    border-radius:999px;
+
+    background:
+    linear-gradient(
+    90deg,
+    #00d4ff,
+    #7c3aed);
+
+    box-shadow:
+    0 0 20px #00d4ff;
+
+    animation:loading 3s ease infinite;
+}
+
+.buttons{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
 }
 
 .btn{
-    display:inline-block;
-    margin-top:30px;
-    padding:14px 30px;
     text-decoration:none;
-    color:white;
+    padding:15px 30px;
+    border-radius:999px;
     font-weight:600;
-    border-radius:50px;
-    background:linear-gradient(135deg,#3b82f6,#8b5cf6);
-    transition:.3s;
+    transition:.4s;
 }
 
-.btn:hover{
-    transform:translateY(-4px);
-    box-shadow:0 10px 25px rgba(59,130,246,.4);
+.btn-primary{
+    background:linear-gradient(90deg,#00d4ff,#7c3aed);
+    color:white;
 }
+
+.btn-primary:hover{
+    transform:translateY(-5px);
+}
+
+.btn-secondary{
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.05);
+    color:white;
+}
+
+.btn-secondary:hover{
+    background:rgba(255,255,255,.1);
+}
+
+.footer{
+    margin-top:35px;
+    color:#7f8aa5;
+    font-size:.9rem;
+}
+
+/* ANIMATION */
 
 @keyframes pulse{
-    0%{transform:scale(1);}
-    50%{transform:scale(1.5);}
-    100%{transform:scale(1);}
+    50%{
+        transform:scale(1.5);
+    }
 }
 
 @keyframes float{
-    0%,100%{
-        transform:translateY(0);
-    }
     50%{
-        transform:translateY(-12px);
+        transform:translateY(-15px);
     }
 }
 
-@media(max-width:600px){
-    h1{
-        font-size:1.8rem;
+@keyframes shine{
+    100%{
+        background-position:300%;
     }
+}
+
+@keyframes loading{
+    50%{
+        filter:brightness(1.2);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
 
     .card{
         padding:45px 25px;
@@ -148,34 +309,86 @@ p{
     .icon{
         font-size:70px;
     }
+
+    p{
+        font-size:.95rem;
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    .orb{
+        display:none;
+    }
+
 }
+
 </style>
 </head>
 <body>
 
+<div class="bg">
+    <div class="glow one"></div>
+    <div class="glow two"></div>
+
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+</div>
+
 <div class="container">
+
     <div class="card">
-        <div class="icon">🚧</div>
 
-        <h1>Maaf, halaman ini Sedang dalam tahap
-            pengembangan</h1>
-
-        <p>
-            Kami sedang mempersiapkan sesuatu yang lebih baik
-            dan akan segera tersedia untuk Anda.
-        </p>
-
-        <div class="status">
-            <span class="dot"></span>
-            <span>Development In Progress</span>
+        <div class="badge">
+            <span></span>
+            Sedang Dikembangkan
         </div>
 
-        <br>
+        <div class="icon">🚀</div>
 
-        <a href="index.html" class="btn">
-            Kembali ke Beranda
-        </a>
+        <h1>Coming Soon</h1>
+
+        <p>
+            Mohon maaf, halaman yang Anda cari saat ini masih dalam tahap
+            pengembangan. Kami sedang menyiapkan pengalaman yang lebih baik,
+            lebih cepat, dan lebih modern untuk Anda.
+        </p>
+
+        <div class="progress-box">
+
+            <div class="progress-title">
+                <span>Progress Pengembangan</span>
+                <span>78%</span>
+            </div>
+
+            <div class="progress">
+                <div class="progress-fill"></div>
+            </div>
+
+        </div>
+
+        <div class="buttons">
+            <a href="/" class="btn btn-primary">
+                Kembali ke Beranda
+            </a>
+
+            <a href="javascript:history.back()" class="btn btn-secondary">
+                Halaman Sebelumnya
+            </a>
+        </div>
+
+        <div class="footer">
+            © 2026 • Website sedang dalam proses penyempurnaan
+        </div>
+
     </div>
+
 </div>
 
 </body>
