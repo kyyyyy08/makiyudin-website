@@ -165,3 +165,116 @@ document
 // Jalankan pertama kali
 renderProducts();
 renderPagination();
+
+
+//category filter
+const categoryBtns =
+document.querySelectorAll(".category-btn");
+
+categoryBtns.forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+        categoryBtns.forEach(b => {
+            b.classList.remove("active");
+        });
+
+        btn.classList.add("active");
+
+        const category =
+        btn.dataset.category;
+
+        products.forEach(product => {
+
+            const productCategory =
+            product.dataset.category;
+
+            if(
+                category === "all" ||
+                productCategory === category
+            ){
+
+                product.style.display =
+                "flex";
+
+            }else{
+
+                product.style.display =
+                "none";
+
+            }
+
+        });
+
+    });
+
+});
+
+//jumlah produk per kategori
+const categoryButtons =
+document.querySelectorAll(".category-btn");
+
+categoryButtons.forEach(button => {
+
+    const category =
+    button.dataset.category;
+
+    let count = 0;
+
+    products.forEach(product => {
+
+        const productCategories =
+        product.dataset.category || "";
+
+        if(category === "all"){
+
+            count++;
+
+        }else if(
+            productCategories.includes(category)
+        ){
+
+            count++;
+
+        }
+
+    });
+
+    button.querySelector("span")
+          .textContent = `(${count})`;
+
+});
+
+//dropdown
+const moreBtn =
+document.getElementById("moreCategoriesBtn");
+
+const moreCategories =
+document.getElementById("moreCategories");
+
+if(moreBtn){
+
+    moreBtn.addEventListener("click", () => {
+
+        moreCategories.classList.toggle("show");
+
+        const icon =
+        moreBtn.querySelector("i");
+
+        if(
+            moreCategories.classList.contains("show")
+        ){
+
+            icon.classList.remove("fa-chevron-down");
+            icon.classList.add("fa-chevron-up");
+
+        }else{
+
+            icon.classList.remove("fa-chevron-up");
+            icon.classList.add("fa-chevron-down");
+
+        }
+
+    });
+
+}
