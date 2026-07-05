@@ -581,10 +581,28 @@ h1{
 }
 
 .product-content h3{
+    display:flex;
+    align-items:center;
+    gap:10px
+}
 
-    font-size:16px;
+.product-number{
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#00d4ff,#7c3aed);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    font-weight:700;
+    flex-shrink:0;;
+}
 
-    margin-bottom:8px;
+.separator{
+    color:#7c3aed;
+    font-weight:bold;
 }
 
 .product-content p{
@@ -944,4 +962,163 @@ h1{
 .more-btn.active i{
 
     transform:rotate(180deg);
+}
+
+/* Bungkus gambar */
+.product-image{
+    position:relative;
+    overflow:hidden;
+    border-radius:18px;
+}
+
+.product-image img{
+    width:100%;
+    display:block;
+    transition:.4s ease;
+}
+
+/* Overlay gelap */
+.product-image::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.25);
+    opacity:0;
+    transition:.35s;
+}
+
+/* Tombol Play */
+.view-image{
+    flex-direction:column;
+    gap:6px;
+    color:#fff;
+    /* background:rgba(0,0,0,.65); */
+    width:90px;
+    height:90px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(.8);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    opacity:0;
+    transition:.35s;
+    z-index:2;
+}
+
+.view-image span{
+    font-size:12px;
+    font-weight:600;
+}
+
+.view-image i{
+    font-size:24px;
+}
+
+.product-image{
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+}
+
+.product-image img{
+    width:100%;
+    display:block;
+    transition:.4s;
+}
+
+/* Overlay Blur */
+.product-image::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    background:rgba(0,0,0,.25);
+
+    opacity:0;
+    transition:.35s;
+    z-index:1;
+}
+
+/* Saat hover */
+.product-image:hover::before{
+    opacity:1;
+}
+
+.product-image:hover .view-image{
+    opacity:1;
+    transform:translate(-50%,-50%) scale(1);
+}
+
+/* Hover gambar */
+.product-image:hover img{
+    transform:scale(1.08);
+    filter:blur(4px) brightness(.6);
+}
+
+.product-image:hover::before{
+    opacity:1;
+}
+
+.product-image:hover .play-demo{
+    opacity:1;
+    transform:translate(-50%,-50%) scale(1);
+}
+
+/* Area tombol */
+.product-actions{
+    margin-top:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+/* Tombol TikTok */
+.video-link{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    padding:9px 16px;
+
+    border-radius:999px;
+
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
+    color:#fff;
+    text-decoration:none;
+
+    transition:.3s;
+}
+
+.video-link i{
+    font-size:18px;
+}
+
+.video-link:hover{
+    background:#000000;
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(0,212,255,.35);
+}
+
+/* Responsive */
+@media (max-width:768px){
+
+    .product-actions{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .product-link,
+    .video-link{
+        justify-content:center;
+    }
+
 }

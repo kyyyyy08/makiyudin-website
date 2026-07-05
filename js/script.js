@@ -50,3 +50,22 @@ searchInput.addEventListener("keyup", () => {
 });
 
 
+document.addEventListener("DOMContentLoaded", () => {
+
+    const productTitles = document.querySelectorAll(".product-item .product-content h3");
+
+    const total = productTitles.length;
+
+    productTitles.forEach((title, index) => {
+
+        // Nomor dibalik (produk terbaru = nomor terbesar)
+        const number = String(total - index).padStart(2, "0");
+
+        title.innerHTML = `
+            <span class="product-number">${number}</span>
+            <span class="separator">|</span>
+            ${title.textContent}
+        `;
+    });
+
+});
